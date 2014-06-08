@@ -1,0 +1,7 @@
+package com.homedepot.headfirst;
+
+public class PrimeNumbers {
+	public static void main(String[] args) {
+		
+	}
+}
