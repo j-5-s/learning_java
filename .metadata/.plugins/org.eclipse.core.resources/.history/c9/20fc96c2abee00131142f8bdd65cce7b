@@ -1,7 +1,0 @@
-package com.homedepot.headfirst;
-
-public class ScratchPad {
-	public void myMethod {
-		
-	}
-}
