@@ -14,7 +14,7 @@ public class PrimeNumbers {
 		PrimeNumbers p = new PrimeNumbers();
 		List<Integer> primes = p.getPrimeNumbers(1, 100);
 		System.out.print(p.toString(primes, " "));
-	}
+	};
 
 	/**
 	 * returns a list of prime numbers for a given set.
@@ -33,7 +33,7 @@ public class PrimeNumbers {
 			fromInt++;
 		}
 		return primeNumbers;
-	}
+	};
 
 	/**
 	 * Determines if the number is prime.
@@ -53,7 +53,7 @@ public class PrimeNumbers {
 			i++;
 		}
 		return isPrime;
-	}
+	};
 
 	/**
 	 * Turns the list of numbers to a string;
@@ -63,7 +63,7 @@ public class PrimeNumbers {
 	 */
 	public String toString(List<Integer> list) {
 		return this.toString(list, " ");
-	}
+	};
 
 	/**
 	 * Turns the list of numbers to a string;
