@@ -81,12 +81,12 @@ public class PrimeNumbers {
 	 * @param deliminator
 	 * @return
 	 */
-	public String toString(String deliminator) {
+	public String toString(String delimiter) {
 		String listString = "";
 		for (int i = 0; i < primeNumbers.size(); i++) {
 			listString += primeNumbers.get(i);
 			if (i < primeNumbers.size() - 1) {
-				listString += deliminator;
+				listString += delimiter;
 			}
 
 		}
