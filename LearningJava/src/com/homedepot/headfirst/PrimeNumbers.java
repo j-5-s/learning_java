@@ -3,17 +3,23 @@ package com.homedepot.headfirst;
 import java.util.*;
 
 /**
- * Simple class for working with prime numbers
- * For chapter 1 of Learning Java
+ * Simple class for working with prime numbers For chapter 1 of Learning Java
+ * 
  * @author jamescharlesworth
- *
+ * 
  */
 public class PrimeNumbers {
 
-	public static void main(String[] args) {
-		PrimeNumbers p = new PrimeNumbers();
-		List<Integer> primes = p.getPrimeNumbers(1, 100);
-		System.out.print(p.toString(primes, " "));
+	static List<Integer> primeNumbers = new ArrayList<Integer>();
+
+	/**
+	 * Constructor - pass in the prime min, max.
+	 * 
+	 * @param fromInt
+	 * @param toInt
+	 */
+	public PrimeNumbers(Integer fromInt, Integer toInt) {
+		this.setPrimeNumbers(fromInt, toInt);
 	};
 
 	/**
@@ -24,7 +30,11 @@ public class PrimeNumbers {
 	 * @return List<Integer>
 	 */
 	public List<Integer> getPrimeNumbers(Integer fromInt, Integer toInt) {
-		List<Integer> primeNumbers = new ArrayList<Integer>();
+		return primeNumbers;
+	};
+
+	public void setPrimeNumbers(Integer fromInt, Integer toInt) {
+		primeNumbers.clear();
 
 		while (fromInt < toInt) {
 			if (this.isPrime(fromInt)) {
@@ -32,7 +42,6 @@ public class PrimeNumbers {
 			}
 			fromInt++;
 		}
-		return primeNumbers;
 	};
 
 	/**
@@ -61,8 +70,8 @@ public class PrimeNumbers {
 	 * @param list
 	 * @return String
 	 */
-	public String toString(List<Integer> list) {
-		return this.toString(list, " ");
+	public String toString() {
+		return this.toString(" ");
 	};
 
 	/**
@@ -72,15 +81,20 @@ public class PrimeNumbers {
 	 * @param deliminator
 	 * @return
 	 */
-	public String toString(List<Integer> list, String deliminator) {
+	public String toString(String deliminator) {
 		String listString = "";
-		for (int i = 0; i < list.size(); i++) {
-			listString += list.get(i);
-			if (i < list.size() - 1) {
+		for (int i = 0; i < primeNumbers.size(); i++) {
+			listString += primeNumbers.get(i);
+			if (i < primeNumbers.size() - 1) {
 				listString += deliminator;
 			}
-			;
+
 		}
 		return listString;
+	};
+
+	public static void main(String[] args) {
+		PrimeNumbers p = new PrimeNumbers(1, 100);
+		System.out.print(p);
 	};
 }
