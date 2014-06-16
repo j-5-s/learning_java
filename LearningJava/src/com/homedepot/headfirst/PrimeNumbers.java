@@ -32,6 +32,14 @@ public class PrimeNumbers {
 	public List<Integer> getPrimeNumbers(Integer fromInt, Integer toInt) {
 		return primeNumbers;
 	};
+	
+	public Integer get(Integer index){
+		return primeNumbers.get(index);
+	};
+	
+	public Integer size() {
+		return primeNumbers.size();
+	};
 
 	public void setPrimeNumbers(Integer fromInt, Integer toInt) {
 		primeNumbers.clear();
@@ -91,10 +99,5 @@ public class PrimeNumbers {
 
 		}
 		return listString;
-	};
-
-	public static void main(String[] args) {
-		PrimeNumbers p = new PrimeNumbers(1, 100);
-		System.out.print(p);
 	};
 }
