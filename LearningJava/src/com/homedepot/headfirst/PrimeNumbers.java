@@ -44,9 +44,9 @@ public class PrimeNumbers {
 	public void setPrimeNumbers(Integer fromInt, Integer toInt) {
 		primeNumbers.clear();
 
-		while (fromInt < toInt) {
-			if (this.isPrime(fromInt)) {
-				primeNumbers.add(fromInt);
+		for (int i = fromInt; i <= toInt; i++) {
+			if (this.isPrime(i)) {
+				primeNumbers.add(i);
 			}
 			fromInt++;
 		}

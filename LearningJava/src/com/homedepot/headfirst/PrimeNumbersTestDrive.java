@@ -4,9 +4,13 @@ import com.homedepot.headfirst.PrimeNumbers;
 
 public class PrimeNumbersTestDrive {
 	public static void main(String[] args) {
-		PrimeNumbers p = new PrimeNumbers(1, 100);
-		System.out.println("["+ p.toString(",") + "]");
-		System.out.println( "The first prime number is " + p.get(0));
-		System.out.println( "The last prime number is "+ p.get(p.size() - 1 ));
+		try {
+			Integer fromInt = Integer.parseInt(args[0]);
+			Integer toInt = Integer.parseInt(args[1]);
+	 		PrimeNumbers p = new PrimeNumbers(fromInt, toInt);
+			System.out.println(p.toString("\n"));
+		} catch(Exception e) {
+			 System.err.println("You must pass command line arguments");
+		}
 	};
 }
