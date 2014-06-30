@@ -40,25 +40,39 @@ public class PrimeNumbers {
 	public Integer size() {
 		return primeNumbers.size();
 	};
-
+	
 	public void setPrimeNumbers(Integer fromInt, Integer toInt) {
 		primeNumbers.clear();
 
 		for (int i = fromInt; i <= toInt; i++) {
-			if (this.isPrime(i)) {
+			if (PrimeNumbers.isPrime(i)) {
 				primeNumbers.add(i);
 			}
 			fromInt++;
 		}
 	};
 
+	static public ArrayList<Integer> getDivisibleBy(Integer n){
+		ArrayList<Integer> divisibleBy = new ArrayList<Integer>();
+		
+		for (Integer i = 1; i <= n; i++) {
+			if (n % i == 0 ){
+				divisibleBy.add(i);
+			}
+		}
+		
+		return divisibleBy;
+	};
+	
+
+	
 	/**
 	 * Determines if the number is prime.
 	 * 
 	 * @param number
 	 * @return boolean
 	 */
-	public boolean isPrime(int number) {
+	static public boolean isPrime(int number) {
 		boolean isPrime = true;
 		int i = 2;
 		number = Math.abs(number);
