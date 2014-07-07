@@ -12,8 +12,8 @@ import com.homedepot.headfirst.PrimeNumberTester;
 public class PrimeNumberPrinter extends PrimeNumberTester {
 	public Integer[] testPrime(Integer i) {
 		Integer[] divisors = super.testPrime(i);
-		boolean isPrime = PrimeNumbers.isPrime(i);
-		if (isPrime) {
+		
+		if ( divisors.length == 0 ) {
 			System.out.println(i + " is a prime number!");
 		} else {
 			String str = "";
