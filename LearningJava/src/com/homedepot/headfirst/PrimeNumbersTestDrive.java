@@ -1,16 +1,30 @@
 package com.homedepot.headfirst;
 
-import com.homedepot.headfirst.PrimeNumbers;
+import java.util.ArrayList;
+
+import com.homedepot.headfirst.Numbers;
+import com.homedepot.headfirst.Number;
+
 
 public class PrimeNumbersTestDrive {
 	public static void main(String[] args) {
-		try {
-			Integer fromInt = Integer.parseInt(args[0]);
-			Integer toInt = Integer.parseInt(args[1]);
-	 		PrimeNumbers p = new PrimeNumbers(fromInt, toInt);
-			System.out.println(p.toString("\n"));
-		} catch(Exception e) {
-			 System.err.println("You must pass command line arguments");
-		}
+	
+			int[] n = {23479, 19991, 99997, 62711, 59197, 44521, 59197 };
+			
+	 		Numbers numbers = new Numbers(n);
+	 		for (int i = 0; i < numbers.theList.size(); i++) {
+	 			Number theNumber =  numbers.theList.get(i);
+	 			String str = "";
+	 			str += theNumber.getValue() + " is " + (!theNumber.getIsPrime() ? "not" : "") + "a prime number. ";
+	 			if (!theNumber.getIsPrime()) {
+	 				str += "It is divisble by ";
+	 				str += Numbers.prettyPrint(theNumber.getDivisors(), ", ", " and ") + ".";
+	 			}
+	 			
+	 			System.out.println(str);
+	 			
+	 		}
+			
+
 	};
 }
