@@ -1,7 +1,5 @@
 package com.homedepot.headfirst;
 
-import java.util.ArrayList;
-
 import com.homedepot.headfirst.Numbers;
 import com.homedepot.headfirst.Number;
 
@@ -15,7 +13,7 @@ public class PrimeNumbersTestDrive {
 	 		for (int i = 0; i < numbers.theList.size(); i++) {
 	 			Number theNumber =  numbers.theList.get(i);
 	 			String str = "";
-	 			str += theNumber.getValue() + " is " + (!theNumber.getIsPrime() ? "not" : "") + "a prime number. ";
+	 			str += theNumber.getValue() + " is " + (!theNumber.getIsPrime() ? "not " : "") + "a prime number. ";
 	 			if (!theNumber.getIsPrime()) {
 	 				str += "It is divisble by ";
 	 				str += Numbers.prettyPrint(theNumber.getDivisors(), ", ", " and ") + ".";

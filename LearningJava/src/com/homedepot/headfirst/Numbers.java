@@ -37,9 +37,9 @@ public class Numbers {
 				//is it the last one, of so, 
 				str += list.get(n);
 				if (n == list.size() - 2 ) {
-					str += " and ";
+					str += lastSep;
 				} else if (n < list.size() - 1) {
-					str += ", ";
+					str += sep1;
 				}
 			}
 		return str;
