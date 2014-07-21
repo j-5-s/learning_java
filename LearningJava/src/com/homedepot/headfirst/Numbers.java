@@ -29,6 +29,10 @@ public class Numbers {
 		}
 	}
 	
+	public Integer size() {
+		return this.originalList.size();
+	}
+	
 
 	
 	static public String prettyPrint(ArrayList<Integer> list, String sep1, String lastSep) {

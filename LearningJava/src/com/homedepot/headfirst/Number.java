@@ -1,6 +1,8 @@
 package com.homedepot.headfirst;
 
+import java.text.NumberFormat;
 import java.util.ArrayList;
+import java.util.Locale;
 
 interface NumberInterface {
     //  wheel revolutions per minute
@@ -61,5 +63,11 @@ public class Number implements NumberInterface {
 	
 	public ArrayList<Integer> getDivisors() {
 		return this.divisors;
+	}
+	
+	public String toString() {
+	
+		return "" + NumberFormat.getNumberInstance(Locale.US).format(this.getValue());
+		
 	}
 }
