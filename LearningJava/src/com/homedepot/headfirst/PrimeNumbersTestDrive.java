@@ -3,32 +3,28 @@ package com.homedepot.headfirst;
 import com.homedepot.headfirst.Numbers;
 import com.homedepot.headfirst.Number;
 import java.util.Date;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class PrimeNumbersTestDrive {
-	public static void main(String[] args) {
-			java.util.Date startTime = new java.util.Date();
-			int[] n = {23479, 19991, 99997, 62711, 59197, 44521 };
-			
-	 		Numbers numbers = new Numbers(n);
-	 		for (int i = 0; i < numbers.theList.size(); i++) {
-	 			Number theNumber =  numbers.theList.get(i);
-	 			String str = "";
-	 			
-	 			if (!theNumber.getIsPrime()) {
-	 				str += theNumber + " is not a prime number.";
-	 			} else {
-	 				str += theNumber + " is a prime number.";
-	 			}
-	 			
-	 			System.out.println(str);
-	 			
-	 			
-	 		}
-	 		java.util.Date endTime= new java.util.Date();
-	 		
-	 		System.out.println("\r\nTesting " + numbers.size() + " took " + (endTime.getTime() - startTime.getTime()) + " ms");
-	 		
-			
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        System.out.print("Please enter a number to check\n");
+        while (true) {
+	        try{
+	    		
+	           
+	            int i = Integer.parseInt(br.readLine());
+	
+	
+	            Number n = new Number(i);
+	            System.out.println(i + " is" + ( (n.isPrime()) ? "" : " not") + " a prime number");
+	            System.out.print("Please enter a number to check\n");
+	        }catch(NumberFormatException nfe){
+	            System.err.println("\nInvalid entry, goodbye.");
+	        }
+        }
 
 	};
 }
