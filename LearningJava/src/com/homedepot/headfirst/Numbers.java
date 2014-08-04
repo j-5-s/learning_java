@@ -2,51 +2,111 @@ package com.homedepot.headfirst;
 
 import java.util.ArrayList;
 
-import com.homedepot.headfirst.Number;
+import com.homedepot.headfirst.PrimeNumber;
+
+import java.io.BufferedWriter;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
 
 //collection of Numbers
 public class Numbers {
 	
-	ArrayList<Number> theList;
-	ArrayList<Integer> originalList;
 	
-	public Numbers(int[] list){
+	public class PrimeReader implements Runnable {
+	     
+		ArrayList<Integer> primes;
+
+	     @Override
+	     public void run() {
+	    	 primes = new ArrayList();
+	    	 BufferedReader br = null;
+				try {
+					br = new BufferedReader(new FileReader("primes2.txt"));
+				    String line = br.readLine();
 		
-		this.theList = new ArrayList<Number>();
-		this.originalList = new ArrayList<Integer>();
-		
-		for (int i = 0; i < list.length; i++) {
-			Number n;
-			
-			if (this.originalList.contains(list[i]) ) {
-				n = theList.get(this.originalList.indexOf(list[i]));
-			} else {
-				n = new Number(list[i]);
+			        while (line != null) {
+			        	int i = Integer.parseInt(line);
+			            primes.add(i);
+			            line = br.readLine();
+			        }
+			        
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+				
+					
 			}
-			
-			this.theList.add(n);
-			this.originalList.add(list[i]);
+	     
+		     public ArrayList getValue() {
+		         return primes;
+		     }
+	     }
+	
+	ArrayList primes;
+
+	public Numbers() throws IOException{
+		primes = this.readPrimes();
+	}
+	
+	public boolean isPrime(int i) {
+		
+		if (primes.contains(i)) {
+			return true;
+		} else {
+			return false;
 		}
 	}
 	
-	public Integer size() {
-		return this.originalList.size();
-	}
-	
+	private Thread writePrimes( ){
+		return new Thread( new Runnable() {
+			public void run() {
+				FileWriter writer;
+				try {
+					writer = new FileWriter("primes2.txt");
 
-	
-	static public String prettyPrint(ArrayList<Integer> list, String sep1, String lastSep) {
-		String str = "";
-			for (int n = 0; n < list.size(); n++) {
-				//is it the last one, of so, 
-				str += list.get(n);
-				if (n == list.size() - 2 ) {
-					str += lastSep;
-				} else if (n < list.size() - 1) {
-					str += sep1;
+				for (int i = 0; i < 1000000; i++) {
+					if (PrimeNumber.isPrime(i)) {
+						 writer.write("" + i + "\n");
+					}
+				}
+				writer.close();
+				} catch (IOException e) {
+					e.printStackTrace();
 				}
 			}
-		return str;
+		});
 	}
+	
+	
+	
+	private ArrayList readPrimes() throws IOException {
+		 File f = new File("primes2.txt");
+		 Thread t;
+		 
+		 if(!f.exists()) {
+			 t = this.writePrimes();
+			 t.start();
+			 try {
+				 t.join();
+			 } catch(InterruptedException e) {
+				 e.printStackTrace();
+			 }
+		 }
+		 
 
+		 PrimeReader t2 = new PrimeReader();
+		 t2.run();
+		 
+		 return t2.getValue();
+	}
 }
