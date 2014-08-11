@@ -15,4 +15,16 @@ public class PrimeNumber {
         return true;
     }
 	
+    
+    public static ArrayList<Integer> getDivisibleBy(Integer n){
+		ArrayList<Integer> divisibleBy = new ArrayList<Integer>();
+		
+		for (Integer i = 2; i < n; i++) {
+			if (n % i == 0 ){
+				divisibleBy.add(i);
+			}
+		}
+		
+		return divisibleBy;
+	};
 }
